@@ -1,0 +1,18 @@
+LOGIN / SIGN UP
+
+sign up : nama, alamat, telp, password
+
+HOME
+   - arsip + pendidikan
+ - keuangan
+- kepemilikan
+-kesehatan
+-data diri
+
+form
+- nama dokumen
+- upload file
+- kategori
+
+view document:
+
