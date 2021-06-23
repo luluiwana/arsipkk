@@ -2,184 +2,98 @@
 <html lang="en">
 
 <head>
-    <title>Dashboard</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title><?=$title?></title>
+    <!-- Custom fonts for this template-->
+    <link href="<?=base_URL()?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="<?=base_URL()?>assets/css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?=base_URL()?>assets/css/user.css" rel="stylesheet">
 
-    <meta name="keywords"
-        content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
-    <meta name="author" content="Codedthemes" />
-    <!-- Favicon icon -->
-    <link rel="icon" href="<?=base_url()?>assets/images/favicon.ico" type="image/x-icon">
-    <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-    <!-- waves.css -->
-    <link rel="stylesheet" href="<?=base_url()?>assets/pages/waves/css/waves.min.css" type="text/css" media="all">
-    <!-- Required Fremwork -->
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/bootstrap/css/bootstrap.min.css">
-    <!-- waves.css -->
-    <link rel="stylesheet" href="<?=base_url()?>assets/pages/waves/css/waves.min.css" type="text/css" media="all">
-    <!-- themify icon -->
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/icon/themify-icons/themify-icons.css">
-    <!-- font-awesome-n -->
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/font-awesome-n.min.css">
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/font-awesome.min.css">
-    <!-- scrollbar.css -->
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/jquery.mCustomScrollbar.css">
-    <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/user_style.css">
 </head>
 
-<body>
-    <!-- Pre-loader start -->
-    <div class="theme-loader">
-        <div class="loader-track">
-            <div class="preloader-wrapper">
-                <div class="spinner-layer spinner-blue">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-                <div class="spinner-layer spinner-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-
-                <div class="spinner-layer spinner-yellow">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-
-                <div class="spinner-layer spinner-green">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-white sidebar sidebar-dark accordion" id="accordionSidebar">
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center " href="<?=base_url()?>home">
+                <div class="sidebar-brand-text mx-3 text-dark">ArsipKu</div>
+            </a>
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item  <?php if($title=='Beranda'){echo 'active';}?>">
+                <a class="nav-link text-dark" href="<?=base_url()?>home">
+                    <i class="text-dark fas fa-fw fa-home"></i>
+                    <span>Beranda</span></a>
+            </li>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Jenis Arsip
             </div>
-        </div>
-    </div>
-    <!-- Pre-loader end -->
-    <div id="pcoded" class="pcoded">
-        <div class="pcoded-overlay-box"></div>
-        <div class="pcoded-container navbar-wrapper">
-            <nav class="navbar header-navbar pcoded-header">
-                <div class="navbar-wrapper">
-                    <div class="navbar-logo">
-                        <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
-                            <i class="ti-menu"></i>
-                        </a>
-                        <div class="mobile-search waves-effect waves-light">
-                            <div class="header-search">
-                                <div class="main-search morphsearch-search">
-                                    <div class="input-group">
-                                        <span class="input-group-prepend search-close"><i
-                                                class="ti-close input-group-text"></i></span>
-                                        <input type="text" class="form-control" placeholder="Enter Keyword">
-                                        <span class="input-group-append search-btn"><i
-                                                class="ti-search input-group-text"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="index.html">
-                            <img class="img-fluid" src="<?=base_url()?>assets/images/logo.png" alt="Theme-Logo" />
-                        </a>
+            <li class="nav-item <?php if($title=='Arsip pendidikan'){echo 'active';}?>">
+                <a class="nav-link text-dark" href="<?=base_url()?>pendidikan">
+                    <i class="text-dark fas fa-fw fa-graduation-cap"></i>
+                    <span>Pendidikan</span></a>
+            </li>
+              <li class="nav-item <?php if($title=='Arsip keuangan'){echo 'active';}?>">
+                <a class="nav-link text-dark" href="<?=base_url()?>keuangan">
+                    <i class="text-dark fas fa-fw fa-hand-holding-usd"></i>
+                    <span>Keuangan</span></a>
+            </li>
+              <li class="nav-item <?php if($title=='Arsip kesehatan'){echo 'active';}?>">
+                <a class="nav-link text-dark" href="<?=base_url()?>kesehatan">
+                    <i class="text-dark fas fa-fw fa-heartbeat"></i>
+                    <span>Kesehatan</span></a>
+            </li>
+              <li class="nav-item <?php if($title=='Arsip kepemilikan'){echo 'active';}?>">
+                <a class="nav-link text-dark" href="<?=base_url()?>kepemilikan">
+                    <i class="text-dark fas fa-fw fa-building"></i>
+                    <span>Kepemilikan</span></a>
+            </li>
+              <li class="nav-item <?php if($title=='Arsip Data Diri'){echo 'active';}?>">
+                <a class="nav-link text-dark" href="<?=base_url()?>datadiri">
+                    <i class="text-dark fas fa-fw fa-id-badge"></i>
+                    <span>Data Diri</span></a>
+            </li>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Profil
+            </div>
+             <li class="nav-item <?php if($title=='Pengaturan Profil'){echo 'active';}?>">
+                <a class="nav-link text-dark" href="charts.html">
+                    <i class="text-dark fas fa-fw fa-user-cog"></i>
+                    <span>Pengaturan Profil</span></a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="<?=base_url()?>auth/logout">
+                    <i class="text-dark fas fa-fw fa-sign-out-alt"></i>
+                    <span>Keluar</span></a>
+            </li>
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-warning topbar mb-3 static-top shadow">
 
-                    </div>
-                    <div class="navbar-container container-fluid">
-                        <ul class="nav-left">
-                            <li>
-                                <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a>
-                                </div>
-                            </li>
-
-                        </ul>
-
-                    </div>
-                </div>
-            </nav>
-            <div class="pcoded-main-container">
-                <div class="pcoded-wrapper">
-                    <nav class="pcoded-navbar">
-                        <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
-                        <div class="pcoded-inner-navbar main-menu">
-
-                            <div class="pcoded-navigation-label">Menu</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="active">
-                                    <a href="<?=base_url()?>home" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                        <span class="pcoded-mtext">Dashboard</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="pcoded-navigation-label">Jenis Arsip</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="">
-                                    <a href="form-elements-component.html" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="fa fa-graduation-cap"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext">Pendidikan</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="form-elements-component.html" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="fa fa-dollar-sign"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext">Keuangan</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="form-elements-component.html" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="fa fa-building"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext">Kepemilikan</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="form-elements-component.html" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="fa fa-heartbeat"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext">Kesehatan</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="form-elements-component.html" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="fa fa-id-badge"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext">Data Diri</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                           
-                        </div>
-                    </nav>
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none mr-2 bg-transparent">
+                        <i class="fa fa-bars text-dark"></i>
+                    </button>
+                    <h5 class="text-dark title text-capitalize"><?=$title?></h5>
+                </nav>
+                <!-- End of Topbar -->
