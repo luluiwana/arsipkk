@@ -68,7 +68,7 @@
                 Profil
             </div>
              <li class="nav-item <?php if($title=='Pengaturan Profil'){echo 'active';}?>">
-                <a class="nav-link text-dark" href="charts.html">
+                <a class="nav-link text-dark" href="<?=base_url()?>profil">
                     <i class="text-dark fas fa-fw fa-user-cog"></i>
                     <span>Pengaturan Profil</span></a>
             </li>

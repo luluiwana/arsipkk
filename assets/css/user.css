@@ -4,6 +4,14 @@
 	padding-top: 8px;
 	padding-left: 20px;
 }
+.search{
+	border-radius: 20px 0px 0px 20px;
+    background-color: transparent;
+}
+.btn-search{
+	    border-radius: 0px 20px 20px 0px;
+    border: none;
+}
 .sidebar .nav-item .nav-link {
 	text-align: left;
 	padding: 5px 0px 5px 21px;
@@ -36,9 +44,9 @@
 	.container {
 		padding: 0px;
 	}
-  .form-control{
+  /* .form-control{
     font-size: 12px;
-  }
+  } */
 	.title {
 		padding-left: 0px;
 	}
@@ -74,7 +82,7 @@
 	.sidebar .nav-item .nav-link {
 		text-align: left;
 		width: 10.5rem;
-		padding: 0px 0px 0px 21px;
+		padding: 5px 0px 5px 21px;
 		margin-top: 10px;
 	}
 
@@ -87,6 +95,9 @@
 	}
 	.fa-fw {
 		font-size: x-small;
+	}
+	.white{
+		background-color: white;
 	}
 }
 @media only screen and (min-width: 482px) {

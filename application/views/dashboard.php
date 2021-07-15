@@ -1,18 +1,25 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Content Row -->
-
+    <form action="<?=base_url()?>home/cari/semua" method="post">
+    <div class="form-group row">
+        <input type="text" class="form-control form-control-user search text-center" placeholder="Cari..." name="cari"
+            required="" style="width:90%">
+            <button type="submit" class="sml bg-warning text-dark btn-search" style="width:10%"><i class="fa fa-search mr-1"></i></button>
+    </div>
+    </form>
     <div class="card">
         <div class="card-body">
             <img src="<?=base_url()?>assets/img/user.png" alt="" srcset="" width="40px">
             <h5 class="pt-2 text-dark font-weight-bold">Hai <span style="color:#F0A21C"><?=
             $this->session->userdata('nama');
             ?></span></h5>
-            <a href="<?=base_url()?>tambah" class="btn btn-dark text-white mt-1 sml"><i class="fas fa-plus mr-1"></i>Tambah Arsip</a>
-           
+            <a href="<?=base_url()?>tambah" class="btn btn-dark text-white mt-1 sml"><i
+                    class="fas fa-plus mr-1"></i>Tambah Arsip</a>
+
         </div>
     </div>
-     <div class="pt-4 small">Jenis arsip</div>
+    <div class="pt-4 small">Jenis arsip</div>
     <div class="row pl-2 mt-1">
         <div class="col-md-6 col-xl-3 col-xs-6">
             <a href="<?=base_url()?>pendidikan">
@@ -65,7 +72,8 @@
 
                         <!-- <img src="https://www.pngarts.com/files/6/User-Avatar-in-Suit-PNG.png" alt="" srcset=""
                         width="40px" class="my-3"> -->
-                        <div class="text-dark sml"><span class="h4 font-weight-bold"><?=$kepemilikan?></span> Arsip</div>
+                        <div class="text-dark sml"><span class="h4 font-weight-bold"><?=$kepemilikan?></span> Arsip
+                        </div>
                     </div>
                 </div>
             </a>
@@ -85,6 +93,6 @@
             </a>
         </div>
     </div>
-   
+
 </div>
 <!-- /.container-fluid -->

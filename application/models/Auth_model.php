@@ -31,6 +31,17 @@ public function getUserByTelp($telp)
     $this->db->where('telp',$telp);
     return $this->db->get('user')->row();
 }
+  public function getPassword()
+{
+    $this->db->where('id_user',$this->session->userdata('id_user'));
+    $row = $this->db->get('user')->row();
+    return $row->password;
+}
+public function updatePassword($data)
+{
+    $this->db->where('id_user', $this->session->userdata('id_user'));
+    $this->db->update('user',$data);
+}
                         
                             
                         

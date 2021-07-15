@@ -56,5 +56,6 @@ $route['keuangan'] = 'home/arsip/keuangan';
 $route['kepemilikan'] = 'home/arsip/kepemilikan';
 $route['kesehatan'] = 'home/arsip/kesehatan';
 $route['datadiri'] = 'home/arsip/datadiri';
+$route['profil'] = 'home/profil';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

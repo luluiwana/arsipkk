@@ -10,23 +10,27 @@ class Auth extends CI_Controller
     }
     public function index()
     {
-        $telp = $this->input->post('telp');
-        $this->form_validation->set_rules('telp', 'No Telepon', 'required|numeric', array('numeric'=>'Nomor telepon harus berupa angka'));
-        $this->form_validation->set_rules('password', 'Kata Sandi', 'required|callback_password_check['.$telp.']');
-        
-        if ($this->form_validation->run() == false) {
-            $this->load->view('login');
+        if ($this->session->has_userdata('id_user')) {
+            redirect('home', 'refresh');
         } else {
-            $data=$this->Auth_model->getUserByTelp($telp);
-            $userdata = array(
+            $telp = $this->input->post('telp');
+            $this->form_validation->set_rules('telp', 'No Telepon', 'required|numeric', array('numeric'=>'Nomor telepon harus berupa angka'));
+            $this->form_validation->set_rules('password', 'Kata Sandi', 'required|callback_password_check['.$telp.']');
+        
+            if ($this->form_validation->run() == false) {
+                $this->load->view('login');
+            } else {
+                $data=$this->Auth_model->getUserByTelp($telp);
+                $userdata = array(
                 'id_user'  => $data->id_user,
                 'nama'     => $data->nama
             );
-            $this->session->set_userdata($userdata);
-            redirect('home', 'refresh');
+                $this->session->set_userdata($userdata);
+                redirect('home', 'refresh');
+            }
         }
     }
-   
+ 
     public function password_check($password, $telp)
     {
         $cek_telp = $this->Auth_model->telp_check($telp);

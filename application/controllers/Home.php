@@ -11,6 +11,8 @@ class Home extends CI_Controller
             redirect('auth', 'refresh');
         }
         $this->load->model('Arsip_model');
+        $this->load->model('Auth_model');
+
         $this->load->library('encryption');
     }
     public function index()
@@ -86,8 +88,8 @@ class Home extends CI_Controller
             redirect($data['kategori'], 'refresh');
         } else {
             //jika user upload file
-             //hapus file lama
-            $old_file = $this->Arsip_model->getArsipRow($id_arsip,'file');
+            //hapus file lama
+            $old_file = $this->Arsip_model->getArsipRow($id_arsip, 'file');
             unlink('./files/'.$old_file);
             //update
             $data=array(
@@ -111,6 +113,8 @@ class Home extends CI_Controller
         $data = array(
         'title'=>'Arsip '.$title,
         'arsip'=>$this->Arsip_model->getArsipByKategori($kategori),
+        'count'=>$this->Arsip_model->countByKategori($kategori),
+        'kategori'=>$kategori,
         );
         
         $this->load->view('template/header', $data);
@@ -131,6 +135,107 @@ class Home extends CI_Controller
       );
         $this->load->view('template/header', $data);
         $this->load->view('lihat');
+        $this->load->view('template/footer');
+    }
+    public function profil()
+    {
+        $data=array(
+            'title'=>'Pengaturan Profil',
+            'profil'=>$this->Arsip_model->getProfil()
+        );
+        $this->form_validation->set_rules('nama', 'nama', 'required');
+        $this->form_validation->set_rules('telp', 'telp', 'required|numeric|callback_telp_check', array('numeric'=>'Nomor telepon harus berupa angka'));
+        $this->form_validation->set_rules('alamat', 'alamat ', 'required');
+        
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('profil');
+            $this->load->view('template/footer');
+        } else {
+            $data_user=array(
+            'nama'=>$this->input->post('nama'),
+            'telp'=>$this->input->post('telp'),
+            'alamat'=>$this->input->post('alamat')
+        );
+            $this->Arsip_model->updateProfil($data_user);
+            $userdata = array(
+                'nama'     => $data_user['nama']
+            );
+            $this->session->set_userdata($userdata);
+            redirect('profil', 'refresh');
+        }
+    }
+    public function password()
+    {
+        $data=array(
+            'title'=>'Pengaturan Profil'
+        );
+        $this->form_validation->set_rules('old_password', 'Password', 'required|callback_password_check');
+        $this->form_validation->set_rules('new_password', 'Password', 'required');
+        $this->form_validation->set_rules(
+            'passconf',
+            'Konfirmasi Kata Sandi',
+            'matches[new_password]',
+            array(
+            'matches'=> 'Kata sandi baru tidak sesuai',
+        )
+        );
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('password');
+            $this->load->view('template/footer');
+        } else {
+            $new_password=$this->input->post('new_password');
+            $data=array(
+                'password'=>password_hash($new_password, PASSWORD_BCRYPT)
+            );
+            $this->Auth_model->updatePassword($data);
+            redirect('profil', 'refresh');
+        }
+    }
+    public function password_check($password)
+    {
+        $password_hash = $this->Auth_model->getPassword();
+        if (password_verify($password, $password_hash)) {
+            return true;
+        } else {
+            $this->form_validation->set_message('password_check', 'Kata sandi lama salah');
+            return false;
+        }
+    }
+    public function telp_check($telp)
+    {
+        $count=$this->Arsip_model->uniqueTelp($telp);
+       
+        if ($count==0) {
+            return true;
+        } else {
+            $this->form_validation->set_message('telp_check', 'Nomor Telepon sudah terdaftar');
+            return false;
+        }
+    }
+    public function hapus($id)
+    {
+        $kategori = $this->Arsip_model->getArsipRow($id, 'kategori');
+        $old_file = $this->Arsip_model->getArsipRow($id, 'file');
+
+        $this->Arsip_model->deleteArsip($id);
+         
+        unlink('./files/'.$old_file);
+        redirect($kategori, 'refresh');
+    }
+    public function cari($kategori)
+    {
+        $kata = $this->input->post('cari');
+        $data=array(
+            'title'=>'Pencarian Arsip',
+            'kata'=>$kata,
+            'kategori'=>$kategori,
+            'arsip'=>$this->Arsip_model->cari($kategori, $kata),
+            'count'=>$this->Arsip_model->countCari($kategori, $kata)
+        );
+        $this->load->view('template/header', $data);
+        $this->load->view('cari');
         $this->load->view('template/footer');
     }
 }
